@@ -1,22 +1,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%     Identitication     %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% file abntstyle.sty
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{abntstyle}[%
-   2023/02/17 v1 Standard ABNT rules to typesseting of Academic Works%
+   2023/02/17 v1 Standards of the Associação Brasileira de Normas Técnicas (ABNT)%
+   for the writing of research projects and academic papers.%
 ]%
+
+% Only works with the memoir class!!!!!!!!!!!
+\@ifclasslaoded{memoir}{\let\endabntstyle\relax}{\let\endabntstyle\endinput%
+    \PackageError{abntstyle}{The abntstyle package only works with the memoir %
+    class}{\@ehd}}%
+\endabntstyle
+
 %\ProvidesFile{name}[release information]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%     Initial   Code     %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Declaration of Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareOption*{%
+   \PassOptionsToPackage{\CurrentOption}{memoir}%
+}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Execution of Options  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%    Package  Loading    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage[T1]{fontenc}
-\RequirePackage{geometry}
-   \geometry{vdivide={30mm,*,20mm},hdivide={30mm,*,20mm}}
+%\RequirePackage[T1]{fontenc}
+%\RequirePackage{geometry}
+%   \geometry{vdivide={30mm,*,20mm},hdivide={30mm,*,20mm}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%    Special Commands    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%\LoadClass{memoir}
+%\PassOptionsToPackage{abntstyle}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%       Main  Code       %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{8cm}{1cm}
+Esta é a página inicial de abertura
+\end{adjustwidth}
