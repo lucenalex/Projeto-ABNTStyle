@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%     Identitication     %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% file abntstyle.sty
+%% file abntstyle.sty
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{abntstyle}[%
    2023/02/17 v1 Standards of the Associação Brasileira de Normas Técnicas (ABNT)%
@@ -7,7 +7,7 @@
 ]%
 
 % Only works with the memoir class!!!!!!!!!!!
-\@ifclasslaoded{memoir}{\let\endabntstyle\relax}{\let\endabntstyle\endinput%
+\@ifclassloaded{memoir}{\let\endabntstyle\relax}{\let\endabntstyle\endinput%
     \PackageError{abntstyle}{The abntstyle package only works with the memoir %
     class}{\@ehd}}%
 \endabntstyle
@@ -17,14 +17,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%     Initial   Code     %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Declaration of Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareOption*{%
-   \PassOptionsToPackage{\CurrentOption}{memoir}%
-}%
+%\DeclareOption*{%
+%   \PassOptionsToPackage{\CurrentOption}{memoir}%
+%}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Execution of Options  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%    Package  Loading    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage[T1]{fontenc}
 %\RequirePackage{geometry}
 %   \geometry{vdivide={30mm,*,20mm},hdivide={30mm,*,20mm}}
 
@@ -33,6 +34,32 @@
 %\PassOptionsToPackage{abntstyle}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%       Main  Code       %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{adjustwidth}{8cm}{1cm}
-Esta é a página inicial de abertura
-\end{adjustwidth}
+
+%% According to ABNT Standards, NBR 14274/011 and NBR 15287/2011, the texts must
+%% be typed (...) in black (...). Use white or recycled paper in A4 format
+%% (21 cm × 29.7 cm) if printed.
+
+%% sheets: sheets of the paper
+%% stock is untrimmed sheets
+\setstocksize{297mm}{210mm} % height = 297mm and width = 210mm (A4 format)
+
+%% leaves: trimmed sheets of paper (\paperheight and \paperwidth)
+\settrimmedsize{\stockheight}{\stockwidth}{*} % ratio = *
+
+%% the amount to be removed from the top and fore-edge
+\settrims{0mm}{0mm} % \trimtop = 0mm and \trimedge = 0mm
+
+%% Specifying the typeblock size (ratio = *)
+\settypeblocksize{247mm}{160mm}{*} %\textheight = 247mm and \textwidth = 160mm
+
+%% Specifying the left (spine) and right (edge) margins
+% remarks: use \setlrmargins or \setlrmarginsandblock is sufficiently
+\setlrmargins{30mm}{*}{*}
+\setlrmarginsandblock{30mm}{20mm}{*}
+
+%% Specifying the top (upper) and bottom (lower) margins
+% remarks: use \setulmargins or \setulmarginsandblock is sufficiently
+\setulmargins{30mm}{*}{*}
+\setulmarginsandblock{30mm}{20mm}{*}
+
+\checkandfixthelayout
