@@ -40,8 +40,8 @@
 %% (21 cm × 29.7 cm) if printed.
 
 %% sheets: sheets of the paper
-%% stock is untrimmed sheets
-\setstocksize{297mm}{210mm} % height = 297mm and width = 210mm (A4 format)
+%% stock is untrimmed sheets (A4 format)
+\setstocksize{297mm}{210mm} % stockheight = 297mm and stockwidth = 210mm
 
 %% leaves: trimmed sheets of paper (\paperheight and \paperwidth)
 \settrimmedsize{\stockheight}{\stockwidth}{*} % ratio = *
@@ -54,12 +54,27 @@
 
 %% Specifying the left (spine) and right (edge) margins
 % remarks: use \setlrmargins or \setlrmarginsandblock is sufficiently
-\setlrmargins{30mm}{*}{*}
-\setlrmarginsandblock{30mm}{20mm}{*}
+% ratio = 20/30 = 0.66666...
+\setlrmargins{*}{*}{0.666666666666666666666666666666666666666666666666666666667}
+%\setlrmargins{30mm}{*}{*}
+%\setlrmarginsandblock{30mm}{20mm}{*}
 
 %% Specifying the top (upper) and bottom (lower) margins
 % remarks: use \setulmargins or \setulmarginsandblock is sufficiently
-\setulmargins{30mm}{*}{*}
-\setulmarginsandblock{30mm}{20mm}{*}
+\setulmargins{*}{*}{0.666666666666666666666666666666666666666666666666666666667}
+%\setulmargins{30mm}{*}{*}
+%\setulmarginsandblock{30mm}{20mm}{*}
+
+%\setheadfoot{23mm}{18mm} % \setheadfoot{<headheight>}{<footskip>}
+                          % It is usual to set the \headheight to at least the
+                          % value of the \baselineskip of the normal body font.
+
+%\setheaderspaces{}{}{}   % \setheaderspaces{<headdrop>}{<headsep>}{<ratio>}
+                          % ratio = headsep/headdrop
+                          % This macros specifying the spacing above (headdrop)
+                          % and below (headsep) the header.
+                          % \uppermargin = \headdrop + \headheight + \headsep
+                          % Specifying only one of the parameters; other para-
+                          % meter specifying with star (*).
 
 \checkandfixthelayout
